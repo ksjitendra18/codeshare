@@ -12,7 +12,7 @@
 <header class="bg-primary h-[80px]">
 	<div class="max-w-[1180px] mx-auto p-5 text-white flex justify-between items-center">
 		<h1 class="text-2xl md:text-3xl font-bold">
-			<a href="/"> CodeShare </a>
+			<a href="/"> EasyCodeShare </a>
 		</h1>
 
 		<nav class="hidden md:flex items-center gap-12 ">

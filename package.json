@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@fontsource/inter": "^4.5.15"
+		"@fontsource/inter": "^4.5.15",
+		"mongoose": "^6.9.1"
 	}
 }
