@@ -1,37 +1,52 @@
+<script>
+	import { enhance } from '$app/forms';
+	import { createUserWithEmailAndPassword } from 'firebase/auth';
+	import { auth } from '../../utils/firebase';
+	async function handleSubmit(event) {
+		const data = new FormData(this);
+		const userName = data.get('username');
+		const email = data.get('email');
+		const password = data.get('password');
+
+		const userDetails = await createUserWithEmailAndPassword(auth, email, password);
+		console.log('userDetails', userDetails.user);
+	}
+</script>
+
 <svelte:head>
 	<title>Signup | CodeShare</title>
 </svelte:head>
-<section class="mt-40 flex flex-col items-center">
+<section class="mt-20 md:mt-36 flex flex-col items-center md:px-10">
 	<h2 class="font-bold text-4xl mb-10">Signup</h2>
-	<form>
-		<div class="w-[400px]">
+	<form method="POST" on:submit|preventDefault={handleSubmit}>
+		<div class="md:w-[400px] w-full ">
 			<label for="username" class="block text-sm text-gray-800 mb-1">Username</label>
 			<input
 				type="text"
 				name="username"
 				id="username"
 				placeholder="Enter your username"
-				class="bg-gray-300 w-[400px] text-black py-2 px-3 rounded-lg outline-mainColour"
+				class="bg-gray-300 md:w-[400px] w-full text-black py-2 px-3 rounded-lg outline-mainColour"
 			/>
 		</div>
-		<div class="w-[400px] mt-5">
+		<div class="md:w-[400px] mt-5">
 			<label for="email" class="block text-sm text-gray-800 mb-1">Email</label>
 			<input
 				type="email"
 				name="email"
 				id="email"
 				placeholder="Enter your email"
-				class="bg-gray-300 w-[400px] text-black py-2 px-3 rounded-lg outline-mainColour"
+				class="bg-gray-300  md:w-[400px] w-full text-black py-2 px-3 rounded-lg outline-mainColour"
 			/>
 		</div>
-		<div class="w-[400px] mt-5">
+		<div class="md:w-[400px] mt-5">
 			<label for="password" class="block text-sm text-gray-800 mb-1">Password</label>
 			<input
 				type="password"
 				name="password"
 				id="password"
 				placeholder="Enter your password"
-				class="bg-gray-300 w-[400px] text-black py-2 px-3 rounded-lg outline-mainColour"
+				class="bg-gray-300  md:w-[400px] w-full text-black py-2 px-3 rounded-lg outline-mainColour"
 			/>
 		</div>
 
@@ -40,7 +55,7 @@
 		</div>
 	</form>
 
-	<div class="flex justify-start w-[400px] mt-5">
+	<div class="flex justify-start md:w-[400px] mt-5">
 		<p>Already Registered? <a href="/login" class="font-bold">Login</a></p>
 	</div>
 </section>
