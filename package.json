@@ -23,6 +23,7 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/inter": "^4.5.15",
+		"firebase": "^9.17.1",
 		"mongoose": "^6.9.1"
 	}
 }

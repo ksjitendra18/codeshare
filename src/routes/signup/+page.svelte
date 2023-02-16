@@ -1,5 +1,16 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { createUserWithEmailAndPassword } from 'firebase/auth';
+	import { auth } from '../../utils/firebase';
+	async function handleSubmit(event) {
+		const data = new FormData(this);
+		const userName = data.get('username');
+		const email = data.get('email');
+		const password = data.get('password');
+
+		const userDetails = await createUserWithEmailAndPassword(auth, email, password);
+		console.log('userDetails', userDetails.user);
+	}
 </script>
 
 <svelte:head>
@@ -7,7 +18,7 @@
 </svelte:head>
 <section class="mt-20 md:mt-36 flex flex-col items-center md:px-10">
 	<h2 class="font-bold text-4xl mb-10">Signup</h2>
-	<form method="POST" use:enhance>
+	<form method="POST" on:submit|preventDefault={handleSubmit}>
 		<div class="md:w-[400px] w-full ">
 			<label for="username" class="block text-sm text-gray-800 mb-1">Username</label>
 			<input

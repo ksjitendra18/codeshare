@@ -1,3 +1,8 @@
+<script>
+	import { userId } from '../store/userInfo';
+	console.log('user', $userId);
+</script>
+
 <svelte:head>
 	<title>CodeShare</title>
 </svelte:head>
